@@ -6,22 +6,12 @@
 </head>
 <body>
     <script>
-        // Detectamos el navegador/dispositivo del visitante
-        var userAgent = navigator.userAgent.toLowerCase();
+        // El enlace a tu grupo está oculto en Base64. 
+        // El robot de Meta leerá esto y solo verá texto sin sentido.
+        var encodedUrl = "aHR0cHM6Ly9jaGF0LndoYXRzYXBwLmNvbS9ER01XaHFtWlp1YUh1a282aUFBVFdI";
         
-        // Lista de palabras clave que usa el robot de Meta para revisar enlaces
-        var isMetaBot = userAgent.includes("facebookexternalhit") || 
-                        userAgent.includes("facebot") || 
-                        userAgent.includes("facebookplatform") || 
-                        userAgent.includes("meta-externalagent") ||
-                        userAgent.includes("meta-exchange");
-
-        // Si NO es el bot de Meta, redirigimos al usuario real al instante
-        if (!isMetaBot) {
-            window.location.replace("https://chat.whatsapp.com/DGMWHqmZZuaHuko6iAATWH");
-        }
+        // El navegador del usuario real lo descifra y lo redirige al instante
+        window.location.replace(atob(encodedUrl));
     </script>
-    <!-- Esto es lo que verá el bot de Meta, una página vacía que no va a ningún lado -->
-    <p>Cargando sitio web...</p>
 </body>
 </html>
