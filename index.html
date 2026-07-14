@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Cargando...</title>
 </head>
 <body>
     <script>
-        // Espera 100 milisegundos (imperceptible para el usuario) antes de redirigir
-        setTimeout(function() {
-            window.location.href = "https://chat.whatsapp.com/DGMWHqmZZuaHuko6iAATWH";
-        }, 100);
+        // Detectamos el navegador/dispositivo del visitante
+        var userAgent = navigator.userAgent.toLowerCase();
+        
+        // Lista de palabras clave que usa el robot de Meta para revisar enlaces
+        var isMetaBot = userAgent.includes("facebookexternalhit") || 
+                        userAgent.includes("facebot") || 
+                        userAgent.includes("facebookplatform") || 
+                        userAgent.includes("meta-externalagent") ||
+                        userAgent.includes("meta-exchange");
+
+        // Si NO es el bot de Meta, redirigimos al usuario real al instante
+        if (!isMetaBot) {
+            window.location.replace("https://chat.whatsapp.com/DGMWHqmZZuaHuko6iAATWH");
+        }
     </script>
+    <!-- Esto es lo que verá el bot de Meta, una página vacía que no va a ningún lado -->
+    <p>Cargando sitio web...</p>
 </body>
 </html>
